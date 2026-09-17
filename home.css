@@ -1,53 +1,96 @@
 /* Global defaults */
+:root {
+  --page-background: #f7f3e8;
+  --primary: #243447;
+  --accent: #1b2736;
+  --highlight: #1b2736;
+  --light-text: #f0f7f4;
+  --font-body: "Tajawal", sans-serif;
+  --font-display: "Poppins", "Tajawal", sans-serif;
+}
+
 * {
-  /* color: #d4d6b9 !important; */
-  transition: 0.5s;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--page-background);
+}
+
+::-moz-selection {
+  background-color: var(--primary);
+  color: var(--page-background);
+}
+
+.navbar ::selection,
+.site-footer ::selection {
+  background-color: var(--page-background);
+  color: var(--primary);
+}
+
+.navbar ::-moz-selection,
+.site-footer ::-moz-selection {
+  background-color: var(--page-background);
+  color: var(--primary);
+}
+
+a,
+button,
+.card,
+.site-footer a {
+  transition: 0.2s ease;
 }
 /* Page background */
 body {
-  background-color: #fefee3;
+  background-color: var(--page-background);
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 /* Main navigation */
 .navbar {
-  color: #d4d6b9 !important;
   border-radius: 15px;
   width: 80vw;
   height: 60px !important;
-  background-color: #383b53 !important;
-  color: #d4d6b9 !important;
+  background-color: var(--primary) !important;
+  color: var(--light-text);
   position: relative;
-  top: 20px !important;
-  left: 10vw;
+  margin: 20px auto 0;
+}
+
+.navbar .container-fluid {
+  position: relative;
 }
 /* Dropdown menu */
 .dropdown-menu {
-  background-color: #383b53 !important;
-  color: #d4d6b9 !important;
+  background-color: var(--primary) !important;
+  color: var(--light-text);
 }
 .dropdown-menu:hover {
-  background-color: #383b53 !important;
-  color: #d4d6b9 !important;
+  background-color: var(--primary) !important;
+  color: var(--light-text);
 }
 /* Navigation links */
-.nav-item {
-  position: relative;
-  right: 7vw;
-  left: 50vw;
-  color: #d4d6b9 !important;
-}
 .nav-link {
-  color: #d4d6b9 !important;
+  color: var(--light-text) !important;
 }
 /* Navigation brand */
 .navbar-brand {
-  position: relative;
-  left: 2vw;
-  color: #d4d6b9 !important;
+  position: absolute;
+  left: 1rem;
+  right: auto;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--light-text);
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 500;
 }
 /* Mobile collapse button */
 .navbar-toggler {
-  border: 2px solid #d4d6b9 !important;
+  border: 2px solid var(--light-text);
   border-radius: 10px;
   padding: 0.45rem 0.6rem;
   transition:
@@ -77,12 +120,13 @@ body {
   width: 100%;
   height: 2px;
   border-radius: 999px;
-  background-color: #d4d6b9;
+  background-color: var(--light-text);
   box-shadow:
-    0 0.5rem 0 #d4d6b9,
-    0 1rem 0 #d4d6b9;
+    0 0.5rem 0 var(--light-text),
+    0 1rem 0 var(--light-text);
 }
 /* Responsive SVG illustration */
+.hero-illustration,
 .slogan {
   display: block;
   width: min(100%, 720px);
@@ -94,6 +138,16 @@ body {
   bottom: auto;
   object-fit: contain;
 }
+
+/* Hide facial features while keeping the glasses visible */
+#freepik_stories-learning #elzsf5sfwnpwk,
+#freepik_stories-learning #elix6qiy3amj,
+#freepik_stories-learning #el44x03aic8de,
+#freepik_stories-learning #elriyblg0sbe,
+#freepik_stories-learning #elh78y3jr3jf8,
+#freepik_stories-learning #el9a5t5qh1p59 {
+  display: none;
+}
 /* Decorative experiment */
 body > div[style*="#AD6359"] {
   width: 80px !important;
@@ -104,46 +158,88 @@ body > div[style*="#AD6359"] {
   margin: 3rem auto 0;
 }
 /* Introductory message */
-.idk {
+.intro-message {
   text-align: center;
-  font-family: "Reem Kufi", sans-serif;
-  color: #383b53;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--primary);
   font-size: clamp(1.5rem, 4vw, 3rem);
   position: relative;
   bottom: auto;
   padding: 0 1rem 2rem;
 }
-/* corses */
-.corses-row {
+.courses-section {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 2rem;
 }
-.corses-col {
-  background-color: #383b53;
-  color: #d4d6b9;
+.course-column {
+  border: var(--accent) solid 2px;
+  color: var(--primary);
+  background-color: var(--page-background);
   flex: 1 1 0;
   min-width: 0;
-  padding: 30px;
+  padding: 0;
   margin: 20px 20px 20px 20px;
   border-radius: 12px;
   text-align: center;
+  overflow: hidden;
 }
-.card {
-  background-color: #383b53;
-  color: #d4d6b9;
+.course-card {
+  background-color: #f7f3e8;
+  color: var(--primary);
   border: none;
 }
+.course-card-image {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.course-card .card-body {
+  padding: 1.25rem;
+}
+.course-card-body {
+  background-color: var(--page-background);
+}
+.proprties-corse {
+  font-family: var(--font-body);
+  border: none;
+  background-color: var(--primary);
+  color: var(--light-text);
+  width: 40%;
+  height: 40px;
+  border-radius: 12px;
+}
+.proprties-corse:hover {
+  background-color: var(--page-background);
+  border: var(--primary) solid 1px;
+  color: var(--primary);
+  scale: 1.1;
+}
+.footer-credit {
+  margin-bottom: -16px;
+  padding: 0.25rem;
+  background-color: var(--highlight);
+  color: #d4d6b9;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.footer-credit p {
+  margin: 0;
+}
+
 /* Footer */
 .site-footer {
   margin-top: 5rem;
   padding: 3rem 10vw 1.25rem;
-  background-color: #383b53;
-  border-top: 4px solid #d4d6b9;
-  color: #d4d6b9;
-  font-family: "Reem Kufi", sans-serif;
+  background-color: var(--primary);
+  border-top: 4px solid var(--accent);
+  color: var(--light-text);
+  font-family: var(--font-body);
 }
 .site-footer__content,
 .site-footer__bottom {
@@ -159,7 +255,7 @@ body > div[style*="#AD6359"] {
   margin: 0;
 }
 .site-footer__brand {
-  color: #fefee3;
+  color: var(--page-background);
   font-size: 1.7rem;
   font-weight: 700;
 }
@@ -172,14 +268,14 @@ body > div[style*="#AD6359"] {
   gap: 1.5rem;
 }
 .site-footer a {
-  color: #d4d6b9;
+  color: var(--light-text);
   text-decoration: none;
   transition:
     color 0.2s ease,
     transform 0.2s ease;
 }
 .site-footer a:hover {
-  color: #fefee3;
+  color: var(--light-text) !important;
   transform: translateY(-2px);
 }
 .site-footer__bottom {
@@ -192,6 +288,17 @@ body > div[style*="#AD6359"] {
 
 /* Desktop navigation adjustments */
 @media (min-width: 992px) {
+  .navbar-collapse {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+  }
+
+  .navbar-nav {
+    margin: 0 !important;
+  }
+
   .navbar .nav-item {
     position: static;
     right: auto;
@@ -203,7 +310,7 @@ body > div[style*="#AD6359"] {
 @media (max-width: 991.98px) {
   .navbar {
     width: calc(100% - 2rem);
-    left: 1rem;
+    margin: 20px auto 0;
   }
 
   .navbar .container-fluid {
@@ -215,15 +322,15 @@ body > div[style*="#AD6359"] {
     top: calc(100% + 0.5rem);
     right: 0;
     z-index: 10;
-    width: 25vw;
+    width: min(80vw, 280px);
     padding: 0.5rem;
     border-radius: 12px;
-    background-color: #383b53;
-    box-shadow: 0 10px 24px rgba(56, 59, 83, 0.2);
+    background-color: var(--primary);
+    box-shadow: 0 10px 24px rgba(36, 52, 71, 0.2);
   }
 
   .navbar-nav {
-    width: 90%;
+    width: 100%;
     margin: 0 !important;
   }
 
@@ -235,8 +342,10 @@ body > div[style*="#AD6359"] {
 
   .nav-link {
     text-align: right;
+    color: var(--light-text) !important;
   }
 
+  .hero-illustration,
   .slogan {
     height: calc(100vh - 120px);
     margin-top: 1.5rem;
@@ -251,7 +360,6 @@ body > div[style*="#AD6359"] {
 /* Phone layout */
 @media (max-width: 575.98px) {
   .navbar {
-    top: 0 !important;
     margin-top: 0.75rem;
   }
 
@@ -260,6 +368,7 @@ body > div[style*="#AD6359"] {
     min-width: 0;
   }
 
+  .hero-illustration,
   .slogan {
     width: 100%;
     height: calc(100vh - 100px);
@@ -267,25 +376,25 @@ body > div[style*="#AD6359"] {
     margin-top: 1rem;
   }
 
-  .corses-row .row {
+  .courses-section .row {
     flex-direction: column;
     gap: 1rem;
   }
 
-  .corses-row {
+  .courses-section {
     width: 80vw;
     max-width: 80vw;
     padding-right: 0.75rem;
     padding-left: 0.75rem;
   }
 
-  .corses-col {
+  .course-column {
     width: 100%;
     margin-right: 0;
   }
 
-  .idk {
-    font-size: rem;
+  .intro-message {
+    font-size: clamp(1.5rem, 8vw, 2.25rem);
   }
 
   body > div[style*="#AD6359"] {
