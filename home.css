@@ -13,28 +13,6 @@
   box-sizing: border-box;
 }
 
-::selection {
-  background-color: var(--primary);
-  color: var(--page-background);
-}
-
-::-moz-selection {
-  background-color: var(--primary);
-  color: var(--page-background);
-}
-
-.navbar ::selection,
-.site-footer ::selection {
-  background-color: var(--page-background);
-  color: var(--primary);
-}
-
-.navbar ::-moz-selection,
-.site-footer ::-moz-selection {
-  background-color: var(--page-background);
-  color: var(--primary);
-}
-
 a,
 button,
 .card,
@@ -130,9 +108,9 @@ body {
 .slogan {
   display: block;
   width: min(100%, 720px);
-  height: calc(100vh - 120px);
-  min-height: 320px;
-  margin: 2rem auto 1rem;
+  height: 100vh;
+  min-height: 0;
+  margin: 0 auto;
   position: relative;
   left: auto;
   bottom: auto;
@@ -169,11 +147,16 @@ body > div[style*="#AD6359"] {
   padding: 0 1rem 2rem;
 }
 .courses-section {
+  display: block;
+  margin-bottom: 2rem;
+}
+.courses-section > .row {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
-  margin-bottom: 2rem;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
 }
 .course-column {
   border: var(--accent) solid 2px;
@@ -205,11 +188,13 @@ body > div[style*="#AD6359"] {
   background-color: var(--page-background);
 }
 .proprties-corse {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
   font-family: var(--font-body);
   border: none;
   background-color: var(--primary);
   color: var(--light-text);
-  width: 40%;
   height: 40px;
   border-radius: 12px;
 }
@@ -240,6 +225,9 @@ body > div[style*="#AD6359"] {
   border-top: 4px solid var(--accent);
   color: var(--light-text);
   font-family: var(--font-body);
+}
+.site-footer__brand {
+  font-style: var(--font-body);
 }
 .site-footer__content,
 .site-footer__bottom {
@@ -275,7 +263,7 @@ body > div[style*="#AD6359"] {
     transform 0.2s ease;
 }
 .site-footer a:hover {
-  color: var(--light-text) !important;
+  color: var(--accent);
   transform: translateY(-2px);
 }
 .site-footer__bottom {
@@ -345,10 +333,30 @@ body > div[style*="#AD6359"] {
     color: var(--light-text) !important;
   }
 
+  .courses-section {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .courses-section > .row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .course-column {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+  }
+
   .hero-illustration,
   .slogan {
-    height: calc(100vh - 120px);
-    margin-top: 1.5rem;
+    height: 100vh;
+    margin: 0 auto;
   }
 
   .site-footer {
@@ -371,26 +379,9 @@ body > div[style*="#AD6359"] {
   .hero-illustration,
   .slogan {
     width: 100%;
-    height: calc(100vh - 100px);
-    min-height: 280px;
-    margin-top: 1rem;
-  }
-
-  .courses-section .row {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .courses-section {
-    width: 80vw;
-    max-width: 80vw;
-    padding-right: 0.75rem;
-    padding-left: 0.75rem;
-  }
-
-  .course-column {
-    width: 100%;
-    margin-right: 0;
+    height: 100vh;
+    min-height: 0;
+    margin: 0 auto;
   }
 
   .intro-message {
