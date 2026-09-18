@@ -8,6 +8,10 @@ const hasValidAdsenseConfig =
   /^pub-\d+$/.test(adsenseConfig.publisherId) &&
   /^\d+$/.test(adsenseConfig.slotId);
 
+if (!hasValidAdsenseConfig) {
+  document.documentElement.classList.add("ads-preview");
+}
+
 if (hasValidAdsenseConfig) {
   document.querySelectorAll(".adsbygoogle").forEach((ad) => {
     ad.dataset.adClient = `ca-${adsenseConfig.publisherId}`;
